@@ -2,11 +2,29 @@ import java.io.IOException;
 
 public class Simulador {
     public static void main(String[] args) {
+
+        Config c;
         try{
-            Config cfg = new Config(args[1]);
-        } catch (IOException e) {
-            System.out.println("Não foi possivel ler o arquivo de configuração");
-            System.out.println(e.getMessage());
+            c = new Config(args[0]);
+            System.out.println(c.getAlgoritmo());
+            System.out.println(c.getTamanhoQuantum());
+            System.out.println(c.getPcbList());
+
+            if(c.getAlgoritmo().equals("fcfs")){
+                FCFS algoritmo = new FCFS(c.getPcbList(), "resultado_fcfs.txt");
+                algoritmo.executar();
+            }
+
+            if(c.getAlgoritmo().equals("rr")){
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
         }
+
     }
 }
+
+//Por Bruno de Castro Brezolin e Leonardo Benitez

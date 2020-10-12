@@ -1,5 +1,7 @@
 import java.io.IOException;
-
+/**
+ * Classe que contem o main para executar os algoritmos de escalonamento
+ */
 public class Simulador {
     public static void main(String[] args) {
 

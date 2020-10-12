@@ -15,6 +15,10 @@ public class FCFS extends Escalonador {
     }
 
     //Calcula o tempo em que os processos na lista de PCBs atual começaria e terminaria de executar
+    //Entrada: Nenhuma
+    //Saida: Nenhuma
+    //Pre-condicao: Lista de processos nao vazia
+    //Pos-condicao: Tempo calculado
     private void calcularTempos() {
         this.pcbList.getFirst().setTempoComeco(this.pcbList.getFirst().getTempoChegada());
         this.pcbList.getFirst().setTempoFim(this.pcbList.getFirst().getTempoProcessamento());
@@ -31,6 +35,10 @@ public class FCFS extends Escalonador {
     }
 
     //Executa o escalonamento usando o algoritmo FCFS
+    //Entrada: Nenhuma
+    //Saida: Nenhuma
+    //Pre-condicao: Arquivo valido e lista de processos nao vazia
+    //Pos-condicao: Escalonamento realizado
     public void executar() {
         this.setupSaida();
 

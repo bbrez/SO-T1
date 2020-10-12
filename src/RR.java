@@ -13,6 +13,11 @@ public class RR extends Escalonador {
         this.quantum = quantum;
     }
 
+    //Verifica se o processo terminou
+    //Entrada: Nenhuma
+    //Saida: True se o processo tiver encerrado, False se ainda tiver tempo restante nele
+    //Pre-condicao: Lista de processos nao vazia
+    //Pos-condicao: Verificacao realizada
     private boolean terminou() {
         for (PCB pcb : this.pcbList) {
             if (pcb.getTempoRestante() > 0) return false;
@@ -20,6 +25,11 @@ public class RR extends Escalonador {
         return true;
     }
 
+    //Imprime a troca que vai acontecer
+    //Entrada: Processo que ira sair, processo que ira entrar e o tempo que passou desde o inicio do algoritmo
+    //Saida: Nenhuma
+    //Pre-condicao: Nenhuma
+    //Pos-condicao: Troca impressa
     private void trocaProcesso(PCB saindo, PCB entrando, long tempo) {
         System.out.println("Tempo: " + tempo + "ms");
         System.out.println("Processo pid:" + saindo.getPid() + " saindo\n");
@@ -27,6 +37,11 @@ public class RR extends Escalonador {
         System.out.println("Processo pid:" + entrando.getPid() + " entrando");
     }
 
+    //Imprime um processo
+    //Entrada: Processo que sera impresso
+    //Saida: Nenhuma
+    //Pre-condicao: Processo valido
+    //Pos-condicao: Processo impresso
     private void printProcesso(PCB processo){
         System.out.println("Processo " + processo.getPid() + ":(" +
                 processo.getTempoChegada() + ", " +
@@ -35,6 +50,11 @@ public class RR extends Escalonador {
                 processo.getTempoEspera() + ")");
     }
 
+    //Executa o algoritmo, realizando o escalonamento
+    //Entrada: Nenhuma
+    //Saida: Nenhuma
+    //Pre-condicao: Arquivo valido, lista de processos nao vazia e quantum condigurado
+    //Pos-condicao: Escalonamento realizado
     @Override
     protected void executar() {
         this.setupSaida();

@@ -14,6 +14,11 @@ public class PCB implements Comparable<PCB> {
     private long tempoComeco; //tempo em que começou a executar
     private long tempoFim; //tempo em que terminou de executar
 
+    //Construtor de processos
+    //Entrada: ID, Tempo de Chegada e o Tempo de processamento do novo processo
+    //Saida: Nenhuma
+    //Pre-condicao: Nenhuma
+    //Pos-condicao: Processo criado
     public PCB(int pid, long tempoChegada, long tempoProcessamento){
         this.pid = pid;
         this.tempoChegada = tempoChegada;
@@ -22,17 +27,13 @@ public class PCB implements Comparable<PCB> {
         this.tempoExecutado = 0;
     }
 
-    public int getPid() {
-        return pid;
-    }
+    //Getters e Setters
 
-    public long getTempoChegada() {
-        return tempoChegada;
-    }
+    public int getPid() { return pid; }
 
-    public long getTempoProcessamento() {
-        return tempoProcessamento;
-    }
+    public long getTempoChegada() { return tempoChegada; }
+
+    public long getTempoProcessamento() { return tempoProcessamento; }
 
     public long getTempoRestante() {
         return tempoRestante;
@@ -75,6 +76,12 @@ public class PCB implements Comparable<PCB> {
         this.tempoFim = tempoFim;
     }
 
+    //Compara qual processo tem o menor tempo de chegada
+    //Entrada: Processo que sera comparado
+    //Saida: -1 se o processo passado por parametro for maior, 0 se eles tem o mesmo tempo de chegada e 1 se se o
+    //processo passado por parametro for menor
+    //Pre-condicao: Processos validos
+    //Pos-condicao: Comparacao realizada
     @Override
     public int compareTo(PCB pcb) {
         if(this.tempoChegada < pcb.getTempoChegada()) return -1;
@@ -82,12 +89,4 @@ public class PCB implements Comparable<PCB> {
         else return 0;
     }
 
-    @Override
-    public String toString() {
-        return "PCB{" +
-                "pid=" + pid +
-                ", tempoChegada=" + tempoChegada +
-                ", tempoProcessamento=" + tempoProcessamento +
-                '}';
-    }
 }

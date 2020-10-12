@@ -9,8 +9,8 @@ public class PCB implements Comparable<PCB> {
     private final long tempoChegada; //quando o processo chegou
     private final long tempoProcessamento; //tempo total que o processo tem que executar para acabar
     private long tempoRestante; //tempo restante para o processo acabar
-    private long tempoExecutado; //tempo que o processo ja executou
-    private long tempoEspera; //tempo que o processo esta em espera
+    private long tempoExecutado; //tempo total que o processo ja executou
+    private long tempoEspera; //tempo total que o processo ja esperou
     private long tempoComeco; //tempo em que começou a executar
     private long tempoFim; //tempo em que terminou de executar
 
@@ -18,6 +18,8 @@ public class PCB implements Comparable<PCB> {
         this.pid = pid;
         this.tempoChegada = tempoChegada;
         this.tempoProcessamento = tempoProcessamento;
+        this.tempoRestante = tempoProcessamento;
+        this.tempoExecutado = 0;
     }
 
     public int getPid() {

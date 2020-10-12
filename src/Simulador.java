@@ -6,17 +6,23 @@ public class Simulador {
         Config c;
         try{
             c = new Config(args[0]);
-            System.out.println(c.getAlgoritmo());
-            System.out.println(c.getTamanhoQuantum());
-            System.out.println(c.getPcbList());
+            //System.out.println(c.getAlgoritmo());
+            //System.out.println(c.getTamanhoQuantum());
+            //System.out.println(c.getPcbList());
 
+            Escalonador algoritmo = null;
             if(c.getAlgoritmo().equals("fcfs")){
-                FCFS algoritmo = new FCFS(c.getPcbList(), "resultado_fcfs.txt");
-                algoritmo.executar();
+                algoritmo = new FCFS(c.getPcbList(), "resultado_fcfs.txt");
             }
 
             if(c.getAlgoritmo().equals("rr")){
+                algoritmo = new RR(c.getPcbList(), c.getTamanhoQuantum(), "resultado_rr.txt");
+            }
 
+            if(algoritmo != null){
+                algoritmo.executar();
+            } else {
+                System.out.println("Falha ao montar o algoritmo");
             }
 
         } catch (Exception e) {

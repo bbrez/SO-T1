@@ -15,14 +15,15 @@ public class RR extends Escalonador {
 
     private boolean terminou() {
         for (PCB pcb : this.pcbList) {
-            if (pcb.getTempoRestante() > 0) return true;
+            if (pcb.getTempoRestante() > 0) return false;
         }
-        return false;
+        return true;
     }
 
     private void trocaProcesso(PCB saindo, PCB entrando, long tempo) {
         System.out.println("Tempo: " + tempo + "ms");
-        System.out.println("Processo pid:" + saindo.getPid() + " saindo");
+        System.out.println("Processo pid:" + saindo.getPid() + " saindo\n");
+        System.out.println("---------------------------\n");
         System.out.println("Processo pid:" + entrando.getPid() + " entrando");
     }
 
@@ -31,7 +32,7 @@ public class RR extends Escalonador {
                 processo.getTempoChegada() + ", " +
                 processo.getTempoProcessamento() + ", " +
                 processo.getTempoRestante() + ", " +
-                processo.getTempoEspera() + ", ");
+                processo.getTempoEspera() + ")");
     }
 
     @Override
@@ -49,7 +50,7 @@ public class RR extends Escalonador {
             System.out.println("Tempo Atual: " + tempoAtual + "ms");
 
             for (PCB pcb : this.pcbList) {
-                if (pcb.getTempoChegada() <= tempoAtual) {
+                if (pcb.getTempoChegada() <= tempoAtual && pcb.getTempoRestante() > 0) {
                     if (pcb != anterior) {
                         trocaProcesso(anterior, pcb, tempoAtual);
                     }
@@ -76,6 +77,7 @@ public class RR extends Escalonador {
                         tempoAtual += pcb.getTempoRestante();
                         pcb.setTempoExecutado(pcb.getTempoExecutado() + pcb.getTempoRestante());
                         pcb.setTempoRestante(0);
+                        System.out.println("Processo " + pcb.getPid() + " finalizado");
                     } else {
                         System.out.println("Processo vai executar por " + this.quantum + "ms");
                         tempoAtual += this.quantum;
@@ -98,6 +100,12 @@ public class RR extends Escalonador {
             }
         }
 
+        System.out.println("Fim dos Processos\n");
+        System.out.println("---------------------------\n");
+
         this.calculaMedias();
+
+        System.out.println("Tempo de execução médio: " + this.tempoExecMedio);
+        System.out.println("Tempo de espera médio: " + this.tempoEspMedio);
     }
 }

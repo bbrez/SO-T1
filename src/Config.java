@@ -16,9 +16,12 @@ public class Config {
         Scanner fin = new Scanner(arquivo);
 
         this.algoritmo = fin.nextLine();
+        //System.out.println("Algoritmo: " + this.algoritmo);
 
         if(this.algoritmo.equals("rr")){
             this.tamanhoQuantum = fin.nextInt();
+            fin.nextLine();
+            //System.out.println("Quantum: " + this.tamanhoQuantum);
         } else {
             this.tamanhoQuantum = 0;
         }
@@ -26,7 +29,7 @@ public class Config {
         this.pcbList = new LinkedList<>();
         while(fin.hasNext()){
             String linha = fin.nextLine();
-            String[] dados = linha.split(":\\(|,|\\)"   );
+            String[] dados = linha.split(":\\(|,|\\)");
             if(dados.length != 3) throw new Exception("Erro na leitura do arquivo de configuração");
             PCB pcb = new PCB(Integer.parseInt(dados[0]), Long.parseLong(dados[1]), Long.parseLong(dados[2]));
             this.pcbList.add(pcb);

@@ -11,7 +11,7 @@ public abstract class Escalonador {
     protected final LinkedList<PCB> pcbList; //Lista Encadeada que segura os processos
     protected int numProcessos; //Numero de processos
     protected long tempoTotal = 0; //Tempo para executar todos os processos
-    protected float tempoExecMedio, tempoEspMedio; //Tempo de execução e de espera médio de todos os processos
+    protected float tempoExecMedio = 0, tempoEspMedio = 0; //Tempo de execução e de espera médio de todos os processos
 
     private String arquivoSaida;
 
@@ -44,7 +44,13 @@ public abstract class Escalonador {
     }
 
     protected void calculaMedias() {
+        for(PCB pcb : this.pcbList){
+            this.tempoEspMedio += pcb.getTempoEspera();
+            this.tempoExecMedio += pcb.getTempoProcessamento();
+        }
 
+        this.tempoEspMedio = this.tempoEspMedio / this.pcbList.size();
+        this.tempoExecMedio = this.tempoExecMedio / this.pcbList.size();
     }
 
     protected abstract void executar();

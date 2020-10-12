@@ -67,7 +67,12 @@ public class FCFS extends Escalonador {
         }
 
         System.out.println("Fim dos Processos");
+        System.out.println("---------------------------\n");
+
         this.calculaMedias();
+        
+        System.out.println("Tempo de execução médio: " + this.tempoExecMedio);
+        System.out.println("Tempo de espera médio: " + this.tempoEspMedio);
     }
 
 }

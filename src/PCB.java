@@ -1,9 +1,10 @@
 /**
  * PCB: classe que representa um Bloco de Controle de Processo (Process Control Block do ingles),
  * e contém as informações essenciais dos processos, como seu ID,
- * e o tempo que passou em cada fase do processo de escalonamento
+ * e o tempo que passou em cada fase do processo de escalonamento.
+ * Todos os tempos relacionados são medidos em milissegundos
  */
-public class PCB {
+public class PCB implements Comparable<PCB> {
     private final int pid; //identificador do processo
     private final long tempoChegada; //quando o processo chegou
     private final long tempoProcessamento; //tempo total que o processo tem que executar para acabar
@@ -70,5 +71,21 @@ public class PCB {
 
     public void setTempoFim(long tempoFim) {
         this.tempoFim = tempoFim;
+    }
+
+    @Override
+    public int compareTo(PCB pcb) {
+        if(this.tempoChegada < pcb.getTempoChegada()) return -1;
+        if(this.tempoChegada > pcb.getTempoChegada()) return 1;
+        else return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "PCB{" +
+                "pid=" + pid +
+                ", tempoChegada=" + tempoChegada +
+                ", tempoProcessamento=" + tempoProcessamento +
+                '}';
     }
 }

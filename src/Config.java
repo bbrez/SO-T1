@@ -26,7 +26,7 @@ public class Config {
         this.pcbList = new LinkedList<>();
         while(fin.hasNext()){
             String linha = fin.nextLine();
-            String[] dados = linha.split(":\\(|,|\\)");
+            String[] dados = linha.split(":\\(|,|\\)"   );
             if(dados.length != 3) throw new Exception("Erro na leitura do arquivo de configuração");
             PCB pcb = new PCB(Integer.parseInt(dados[0]), Long.parseLong(dados[1]), Long.parseLong(dados[2]));
             this.pcbList.add(pcb);

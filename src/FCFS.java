@@ -74,7 +74,7 @@ public class FCFS extends Escalonador {
             }
 
             System.out.println("Processo " + pcb.getPid() + " concluido\n");
-            System.out.println("---------------------------");
+            System.out.println("---------------------------\n");
             if(!pcbListCopy.isEmpty()) pcbListCopy.remove();
         }
 

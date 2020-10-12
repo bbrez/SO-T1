@@ -14,10 +14,10 @@ public class PCB implements Comparable<PCB> {
     private long tempoComeco; //tempo em que começou a executar
     private long tempoFim; //tempo em que terminou de executar
 
-    public PCB(int pid, long tempoProcessamento, long tempoChegada){
+    public PCB(int pid, long tempoChegada, long tempoProcessamento){
         this.pid = pid;
-        this.tempoProcessamento = tempoProcessamento;
         this.tempoChegada = tempoChegada;
+        this.tempoProcessamento = tempoProcessamento;
     }
 
     public int getPid() {

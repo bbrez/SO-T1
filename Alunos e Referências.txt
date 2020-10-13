@@ -1,0 +1,11 @@
+Acadêmicos: 
+Bruno de Castro Brezolin e Leonardo Benitez de Freitas
+
+Referências:
+para o monitor da 4 foi utilizado o seguinte site
+http://journals.ecs.soton.ac.uk/java/tutorial/java/threads/monitors.html
+
+para os algoritmos da 2 o seguinte site foi usado para referência
+http://nasemanadaprova.blogspot.com/2015/12/algoritmos-de-escalonamento-de-processos.html
+
+para o projeto em geral foi usado como referência os slides de aulas no dropbox do professor
